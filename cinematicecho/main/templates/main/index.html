@@ -2,5 +2,20 @@
 
 {% block content %}
     <h1>головна сторінка</h1>
-    <p>шось</p>
+    {% for el in film_list %}
+        <div class="alert alert-warning mt-2">
+            <p>
+                {{ el.name}}
+            </p>
+            <p>
+                {{ el.year}}
+            </p>
+            <p>
+                {{ el.director}}
+            </p>
+            <p>
+                {{ el.description}}
+            </p>
+        </div>
+    {%endfor%}
 {% endblock %}
