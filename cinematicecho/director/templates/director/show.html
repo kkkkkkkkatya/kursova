@@ -1,0 +1,9 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+    <h1>Перегляд</h1>
+        {% include 'director/form.html' %}
+        <a href="{% url 'edit' id=id %}" class="btn btn-outline-success">Редагувати</a>
+        <a href="{% url 'delete' id=id %}" class="btn btn-outline-danger">Видалити</a>
+        <span> {{error}}</span>
+{% endblock %}

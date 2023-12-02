@@ -1,0 +1,10 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+    <h1>Редагувати запис</h1>
+    <form method="post">
+        {% include 'director/form.html' %}
+        <button type="submit" class="btn btn-success">Редагувати</button>
+        <span> {{error}}</span>
+    </form>
+{% endblock %}
