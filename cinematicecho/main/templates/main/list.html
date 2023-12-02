@@ -1,0 +1,20 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+    <h1>сторінка адміністратора</h1>
+    {% if error %}
+        <span class="alert alert-danger mt-2"> {{error}}</span>
+    {% endif %}
+    {% for el in film_list %}
+        <div class="alert alert-warning mt-2">
+            <p>
+                {{ el.name}}
+            </p>
+            <p>
+                {{ el.year}}
+            </p>
+             <a href="{% url 'edit' id=el.id %}" class="btn btn-outline-success">Редагувати</a>
+             <a href="{% url 'delete' id=el.id %}" class="btn btn-outline-danger">Видалити</a>
+        </div>
+    {%endfor%}
+{% endblock %}
