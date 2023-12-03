@@ -6,7 +6,7 @@
         <h1>сторінка адміністратора</h1>
     </div>
     <div class="col-3">
-        <a href="{% url 'create' %}" class="btn btn-outline-dark col-12 mt-2">Створити</a>
+        <a href="{% url 'main:create' %}" class="btn btn-outline-dark col-12 mt-2">Створити</a>
     </div>
 
 </div>
@@ -21,8 +21,8 @@
     <p>
         {{ el.year}}
     </p>
-    <a href="{% url 'edit' id=el.id %}" class="btn btn-outline-success">Редагувати</a>
-    <a href="{% url 'delete' id=el.id %}" class="btn btn-outline-danger">Видалити</a>
+    <a href="{% url 'main:edit' id=el.id %}" class="btn btn-outline-success">Редагувати</a>
+    <a href="{% url 'main:delete' id=el.id %}" class="btn btn-outline-danger">Видалити</a>
 </div>
 {%endfor%}
 {% endblock %}

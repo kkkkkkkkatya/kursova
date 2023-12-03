@@ -21,7 +21,7 @@ def create(request):
         form = ActorsForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('list')
+            return redirect(f'{app_name}:list')
         else:
             error = 'Помилки при заповненні форми'
 
@@ -45,13 +45,17 @@ def edit(request, id):
         form = ActorsForm(request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('show', id=instance.id)  # Redirect to film detail view
+            return redirect(f'{app_name}:show', id=instance.id)  # Redirect to film detail view
         else:
             error = 'Помилки при заповненні форми'
 
     ### open form for updating
     else:
-        form = ActorsForm(instance=instance)
+        try:
+            form = ActorsForm(instance=instance)
+        except (Exception) as e:
+            error = str(e)
+            print(f"Error: {e}")
 
     return render(request, f'{app_name}/edit.html', {'form': form, 'error':error})
 
@@ -71,7 +75,7 @@ def delete(request, id):
         keeper_service.push("error", str(e))
         print(f"Error: {e}")
 
-    return redirect('list')
+    return redirect(f'{app_name}:list')
 
 
 ### show film ###

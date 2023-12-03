@@ -1,0 +1,34 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+<h1>список акторів</h1>
+
+<div class="row ">
+    <form method="POST"  action="../add_actor">
+         {% csrf_token %}
+    <div class="col-9">
+        <div class="form-group mb-2">
+            <label for="name"> Актори: </label>
+            {{ actors_form.name }}
+        </div>
+    </div>
+    <div class="col-3">
+        <input type="hidden" name="id" value="{{id}}">
+        <button type="submit" class="btn btn-outline-dark col-12 mt-2">Додати актора</button>
+    </div>
+    </form>
+
+</div>
+{% if error %}
+<span class="alert alert-danger mt-2"> {{error}}</span>
+{% endif %}
+{% for el in actors_list %}
+<div class="alert alert-warning mt-2">
+    <p>
+        {{ el.name}}
+    </p>
+    <a href="{% url 'main:delete' id=el.id %}" class="btn btn-outline-danger">Видалити</a>
+</div>
+{%endfor%}
+{% endblock %}

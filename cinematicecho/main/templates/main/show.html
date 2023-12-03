@@ -3,7 +3,8 @@
 {% block content %}
     <h1>Перегляд</h1>
         {% include 'main/form.html' %}
-        <a href="{% url 'edit' id=id %}" class="btn btn-outline-success">Редагувати</a>
-        <a href="{% url 'delete' id=id %}" class="btn btn-outline-danger">Видалити</a>
+        {% include 'main/actors_list.html' %}
+        <a href="{% url 'main:edit' id=id %}" class="btn btn-outline-success">Редагувати</a>
+        <a href="{% url 'main:delete' id=id %}" class="btn btn-outline-danger">Видалити</a>
         <span> {{error}}</span>
 {% endblock %}
