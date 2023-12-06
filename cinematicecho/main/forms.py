@@ -1,5 +1,5 @@
 from .models import Films, Directors, Actors
-from django.forms import ModelForm, TextInput, Textarea, Select
+from django.forms import ModelForm, TextInput, Textarea, Select,  ClearableFileInput
 
 
 def make_list() -> list:
@@ -16,7 +16,7 @@ class FilmsForm(ModelForm):
         year_choices = [(year, int(year)) for year in range(1900, 2024)]
         directors_choices = Directors.objects.order_by('-id')
 
-        fields = ["name", "year", "director", "description"]
+        fields = ["name", "year", "director", "description", "images"]
         widgets = {
             'name' : TextInput(attrs={
             'placeholder' : "Сам удома",
@@ -32,6 +32,10 @@ class FilmsForm(ModelForm):
         }),
             'description': Textarea(attrs={
                 'placeholder': "Восьмирічний Кевін МакКалістер мріє лише про одне...",
+                'class': "form-control"
+        }),
+            'images': ClearableFileInput(attrs={
+                'placeholder': "select image",
                 'class': "form-control"
             })
         }

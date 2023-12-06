@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Створити запис</h1>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% include 'main/form.html' %}
         <button type="submit" class="btn btn-success">Створити</button>
         <span> {{error}}</span>

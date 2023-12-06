@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1>список акторів</h1>
-
+{% if 'edit' == cur_action %}
 <div class="row ">
     <form method="POST"  action="../add_actor">
          {% csrf_token %}
@@ -20,15 +20,19 @@
     </form>
 
 </div>
+{% endif %}
+
 {% if error %}
-<span class="alert alert-danger mt-2"> {{error}}</span>
+<span class="alert alert-danger row mt-2">Error! {{error}}</span>
 {% endif %}
 {% for el in actors_list %}
 <div class="alert alert-warning mt-2">
     <p>
         {{ el.name}}
     </p>
-    <a href="{% url 'main:delete' id=el.id %}" class="btn btn-outline-danger">Видалити</a>
+    {% if 'edit' == cur_action %}
+    <a href="{% url 'main:delete_actor' id=el.rel_id %}" class="btn btn-outline-danger">Видалити</a>
+    {% endif %}
 </div>
 {%endfor%}
 {% endblock %}
