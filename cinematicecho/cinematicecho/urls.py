@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('main.urls', namespace='main')),
     path('director/', include('director.urls', namespace='director')),
     path('actors/', include('actors.urls', namespace='actors')),
+    path('registry/', include('registry.urls', namespace='registry')),
 
 ]
 
