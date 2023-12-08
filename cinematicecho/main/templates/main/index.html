@@ -1,21 +1,19 @@
 {% extends 'main/layout.html' %}
 
 {% block content %}
-    <h1>головна сторінка</h1>
-    {% for el in film_list %}
-        <div class="alert alert-warning mt-2">
-            <p>
-                {{ el.name}}
-            </p>
-            <p>
-                {{ el.year}}
-            </p>
-            <p>
-                {{ el.director}}
-            </p>
-            <p>
-                {{ el.description}}
-            </p>
-        </div>
-    {%endfor%}
+<h1>головна сторінка</h1>
+<div class="row ">
+{% for el in film_list %}
+    <a href="{% url 'main:a_film' id=el.id %}" class="btn btn-outline-dark col-2">
+<div class="card" style="width: 10rem; height: 20rem;">
+    {% if el.images %}
+    <img src="{{ el.images.url }}" class="card-img-top" alt="image" height="225">
+    {% endif %}
+    <div class="card-body" >
+        <p class="card-text" >{{ el.name}}</p>
+    </div>
+</div>
+</a>
+{%endfor%}
+</div>
 {% endblock %}

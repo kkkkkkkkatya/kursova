@@ -6,6 +6,7 @@
 <span class="alert alert-danger row mt-2">Error! {{error}}</span>
 {% endif %}
 {% include 'main/form.html' %}
+{% include 'main/genres_list.html' %}
 {% include 'main/actors_list.html' %}
 <a href="{% url 'main:edit' id=id %}" class="btn btn-outline-success">Редагувати</a>
 <a href="{% url 'main:delete' id=id %}" class="btn btn-outline-danger">Видалити</a>

@@ -1,14 +1,14 @@
-from .models import Films, Directors, Actors
+from .models import Films, Directors, Actors, Genres
 from django.forms import ModelForm, TextInput, Textarea, Select,  ClearableFileInput
 
 
-def make_list() -> list:
-    actors_ch = []
-    list = Actors.objects.order_by('-id')
+def make_list(mod) -> list:
+    objs_ch = []
+    list = mod.objects.order_by('-id')
     for li in list:
         print(f"li: {li.id} : {li.name}")
-        actors_ch.append((li.id, li.name))
-    return actors_ch
+        objs_ch.append((li.id, li.name))
+    return objs_ch
 
 class FilmsForm(ModelForm):
     class Meta:
@@ -46,13 +46,29 @@ class SelectActorsForm(ModelForm):
     class Meta:
         model = Actors
 
-        actors_choices = make_list()
+        actors_choices = make_list(model)
         print(f"actors_choices: {actors_choices}")
 
         fields = ["name"]
         widgets = {
             'name' : Select(choices=actors_choices, attrs={
             'placeholder' : "Маколей Калкін",
+            'class' : "form-control"
+        })
+        }
+
+
+class SelectGenresForm(ModelForm):
+    class Meta:
+        model = Genres
+
+        genres_choices = make_list(model)
+        print(f"actors_choices: {genres_choices}")
+
+        fields = ["name"]
+        widgets = {
+            'name' : Select(choices=genres_choices, attrs={
+            'placeholder' : "комедія",
             'class' : "form-control"
         })
         }

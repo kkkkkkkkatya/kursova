@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 class Genres(models.Model):
     name = models.CharField('Назва', max_length=30)
+    description = models.TextField('Опис', blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -42,5 +43,14 @@ class RelFilmsActors(models.Model):
 
     class Meta:
         unique_together = ('film', 'actor')
+        #ordering = ['-actor']
+
+
+class RelFilmsGenres(models.Model):
+    film = models.ForeignKey(Films, on_delete=models.CASCADE)
+    genre = models.ForeignKey(Genres, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('film', 'genre')
         #ordering = ['-actor']
 

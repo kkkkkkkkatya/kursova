@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row ">
     <div class="col-9">
-        <h1>сторінка адміністратора</h1>
+        <h1>список фільмів </h1>
     </div>
     <div class="col-3">
         <a href="{% url 'main:create' %}" class="btn btn-outline-dark col-12 mt-2">Створити</a>
@@ -13,16 +13,18 @@
 {% if error %}
 <span class="alert alert-danger mt-2"> {{error}}</span>
 {% endif %}
-{% for el in film_list %}
-<div class="alert alert-warning mt-2">
-    <p>
-        {{ el.name}}
-    </p>
-    <p>
-        {{ el.year}}
-    </p>
-    <a href="{% url 'main:edit' id=el.id %}" class="btn btn-outline-success">Редагувати</a>
-    <a href="{% url 'main:delete' id=el.id %}" class="btn btn-outline-danger">Видалити</a>
+<div class="row ">
+    {% for el in film_list %}
+    <div class="alert alert-light m-2 col-5" role="alert">
+        <p title="{{el.description}}">
+            {{ el.name}}
+        </p>
+        <p>
+            {{ el.year}}
+        </p>
+        <a href="{% url 'main:edit' id=el.id %}" class="btn btn-outline-success">Редагувати</a>
+        <a href="{% url 'main:delete' id=el.id %}" class="btn btn-outline-danger">Видалити</a>
+    </div>
+    {%endfor%}
 </div>
-{%endfor%}
 {% endblock %}
