@@ -45,6 +45,7 @@ def create(request):
     return render(request, 'main/create.html', context)
 
 
+
 ### edit film ###
 def edit(request, id):
     print(f"=== main, action: edit === ")
@@ -243,7 +244,7 @@ def a_film(request, id):
 
 
     #actors_list = RelFilmsActors.objects.filter(film=id)
-    sql = f"""select a.id , a.name, r.id as rel_id
+    sql = f"""select a.id , a.name, a.description, r.id as rel_id
              from main_relfilmsactors r
                   join main_actors a on a.id = r.actor_id
                   where r.film_id = {id}"""

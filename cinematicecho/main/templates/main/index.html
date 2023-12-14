@@ -1,7 +1,7 @@
 {% extends 'main/layout.html' %}
 
 {% block content %}
-<h1>головна сторінка</h1>
+<h1 >Cinematicecho</h1>
 <div class="row ">
 {% for el in film_list %}
     <a href="{% url 'main:a_film' id=el.id %}" class="btn btn-outline-dark col-2">

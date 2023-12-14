@@ -5,32 +5,32 @@
 <span class="alert alert-danger row mt-2">Error! {{error}}</span>
 {% endif %}
 <div class="row ">
-    <div class="m-2 col-3" >
-    <p>
-        {% if film.images %}
-        <img src="{{ film.images.url }}" alt="image" width="230" height="345">
-        {% endif %}
-    </p>
+    <div class="m-2 col-3">
+        <p>
+            {% if film.images %}
+            <img src="{{ film.images.url }}" alt="image" width="230" height="345">
+            {% endif %}
+        </p>
     </div>
     <div class=" m-3 col-8">
-        <h2> {{ film.name}} <h5>{{ film.year}}</h5> </h2>
+        <h2> {{ film.name}} <h5>{{ film.year}}</h5></h2>
         <h5> Режисер {{ film.director}} </h5>
-        <h6> {{ film.description}} </h6>
+        <h6 class="text-secondary"> {{ film.description}} </h6>
         <h5> Жанри: </h5>
+        <div class="form-inline">
             {% for el in genres_list %}
-         <p  title="{{el.description}}">
-        {{ el.name}}
-         </p>
+            <div class="btn btn-light" title="{{el.description}}">{{ el.name}} </div>
+            {%endfor%}
+        </div>
 
-        {%endfor%}
         <h5> Актори: </h5>
-        {% for el in actors_list %}
-         <p>
-        {{ el.name}}
-         </p>
-        {%endfor%}
+        <div class="form-inline">
+            {% for el in actors_list %}
+                <div class="btn btn-light" title="{{el.description}}"> {{ el.name}}  </div>
+            {%endfor%}
+        </div>
     </div>
 </div>
 
 
-        {% endblock %}
+{% endblock %}
