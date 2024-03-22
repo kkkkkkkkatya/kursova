@@ -1,0 +1,31 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+<div class="row ">
+    <div class="col-9">
+        <h1>список акторів</h1>
+    </div>
+    <div class="col-3">
+         <a href="{% url 'actors:create' %}" class="btn btn-outline-dark col-12 mt-2">Створити</a>
+    </div>
+
+</div>
+
+{% if error %}
+<div class="alert alert-danger mt-2 row"> {{error}}</div>
+{% endif %}
+
+<div class="row ">
+    {% for el in instance_list %}
+
+    <div class="alert alert-light m-2 col-5" role="alert">
+        <p>
+            {{ el.name}}
+        </p>
+        <a href="{% url 'actors:edit' id=el.id %}" class="btn btn-outline-success col-3">Редагувати</a>
+        <a href="{% url 'actors:delete' id=el.id %}" class="btn btn-outline-danger col-3">Видалити</a>
+    </div>
+
+    {%endfor%}
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+
+        {% csrf_token %}
+        <div class="form-group mb-2">
+            <label for="name"> Ім'я актора: </label>
+            {{ form.name }}
+        </div>
+        <div class="form-group mb-2">
+            <label for="description"> Опис: </label>
+            {{ form.description }}
+        </div>

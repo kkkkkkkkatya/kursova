@@ -2,9 +2,11 @@
 
 {% block content %}
     <h1>Редагувати запис</h1>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data"  >
         {% include 'main/form.html' %}
-        <button type="submit" class="btn btn-success">Редагувати</button>
+        <button type="submit" class="btn btn-outline-success">Зберегти</button>
         <span> {{error}}</span>
     </form>
+    {% include 'main/genres_list.html' %}
+    {% include 'main/actors_list.html' %}
 {% endblock %}

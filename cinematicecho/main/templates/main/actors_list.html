@@ -1,0 +1,39 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+
+{% if 'edit' == cur_action %}
+<div class="row ">
+    <form method="POST"  action="../add_actor">
+         {% csrf_token %}
+    <div class="col-9">
+        <div class="form-group mb-2">
+            <label for="name"> Актори: </label>
+            {{ actors_form.name }}
+        </div>
+    </div>
+    <div class="col-3">
+        <input type="hidden" name="id" value="{{id}}">
+        <button type="submit" class="btn btn-outline-dark col-12 mt-2">Додати актора</button>
+    </div>
+    </form>
+
+</div>
+{% endif %}
+
+{% if error %}
+<span class="alert alert-danger row mt-2">Error! {{error}}</span>
+{% endif %}
+<h6>Cписок акторів:</h6>
+{% for el in actors_list %}
+<div class="alert alert-secondary m-2 " role="alert">
+    <p>
+        {{ el.name}}
+    </p>
+    {% if 'edit' == cur_action %}
+    <a href="{% url 'main:delete_actor' id=el.rel_id %}" class="btn btn-outline-danger">Видалити</a>
+    {% endif %}
+</div>
+{%endfor%}
+{% endblock %}
